@@ -8,6 +8,11 @@ import './interfaces/IERC20.sol';
 import './interfaces/ICafeFactory.sol';
 import './interfaces/ICafeCallee.sol';
 
+interface IMigrator {
+    // Return the desired amount of liquidity token that the migrator wants.
+    function desiredLiquidity() external view returns (uint256);
+}
+
 contract CafePair is ICafePair, CafeERC20 {
     using SafeMath  for uint;
     using UQ112x112 for uint224;
@@ -117,8 +122,17 @@ contract CafePair is ICafePair, CafeERC20 {
         bool feeOn = _mintFee(_reserve0, _reserve1);
         uint _totalSupply = totalSupply; // gas savings, must be defined here since totalSupply can update in _mintFee
         if (_totalSupply == 0) {
+            address migrator = ICafeFactory(factory).migrator();
+            if (msg.sender == migrator) {
+                liquidity = IMigrator(migrator).desiredLiquidity();
+                require(liquidity > 0 && liquidity != uint256(-1), "Bad desired liquidity");
+            } else {
+                require(migrator == address(0), "Must not have migrator");
+                liquidity = Math.sqrt(amount0.mul(amount1)).sub(MINIMUM_LIQUIDITY);
+                _mint(address(0), MINIMUM_LIQUIDITY); // permanently lock the first MINIMUM_LIQUIDITY tokens
+            }
             liquidity = Math.sqrt(amount0.mul(amount1)).sub(MINIMUM_LIQUIDITY);
-           _mint(address(0), MINIMUM_LIQUIDITY); // permanently lock the first MINIMUM_LIQUIDITY tokens
+            _mint(address(0), MINIMUM_LIQUIDITY); // permanently lock the first MINIMUM_LIQUIDITY tokens
         } else {
             liquidity = Math.min(amount0.mul(_totalSupply) / _reserve0, amount1.mul(_totalSupply) / _reserve1);
         }
