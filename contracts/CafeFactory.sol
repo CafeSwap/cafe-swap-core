@@ -45,7 +45,7 @@ contract CafeFactory is ICafeFactory {
         feeTo = _feeTo;
     }
 
-    function setMigrator(address _migrator) external override {
+    function setMigrator(address _migrator) external {
         require(msg.sender == feeToSetter, 'Cafe: FORBIDDEN');
         migrator = _migrator;
     }
