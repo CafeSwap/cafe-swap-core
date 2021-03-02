@@ -74,6 +74,7 @@ describe('CafeFactory', () => {
   it('setFeeTo', async () => {
     await expect(factory.connect(other).setFeeTo(other.address)).to.be.revertedWith('Cafe: FORBIDDEN')
     await factory.setFeeTo(wallet.address)
+    console.log(await factory.INIT_CODE_PAIR_HASH());
     expect(await factory.feeTo()).to.eq(wallet.address)
   })
 
