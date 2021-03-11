@@ -1,0 +1,14 @@
+{
+  "private_key": {
+    "alice": "bb7ef1e1f75afebecfcc8067a736bd0a469634052e54dc6aebc0f156d6828bd1"
+  },
+  "public_key": {
+    "alice": "0x7c4330a9bcaa5c0AAe805f2220E7bd8faC85eAAF"
+  },
+  "contract_address": {
+    "cafe_factory": "0xb15a99e4146cF7bF16e310b0b12E07417Fb81181"
+  },
+  "provider": {
+    "rpc_endpoint": "https://http-testnet.hecochain.com"
+  }
+}
