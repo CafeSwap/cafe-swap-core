@@ -1,0 +1,14 @@
+{
+  "private_key": {
+    "alice": ""
+  },
+  "public_key": {
+    "alice": ""
+  },
+  "contract_address": {
+    "cafe_factory": "0xC682Ab6969158a027341ed308c87D27d66981faf"
+  },
+  "provider": {
+    "rpc_endpoint": "https://data-seed-prebsc-1-s1.binance.org:8545"
+  }
+}
