@@ -1,7 +1,7 @@
 {
   "name": "@cafeswap-libs/cafe-swap-core",
   "description": "🎛 Core contracts for the cafeswap protocol",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://cafeswap.finance/",
   "repository": {
     "type": "git",

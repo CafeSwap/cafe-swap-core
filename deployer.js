@@ -54,7 +54,9 @@ var URL = "";
                             data: CafeFactory.evm.bytecode.object, 
                             arguments: [accounts[0]]})
                           .send({
-                            from: accounts[0]
+                            from: accounts[0],
+                            gas: 5000000,
+                            gasPrice: 20000000000,
                           })
   console.log(`\nFactory contract deployed at ${cafeFactory.options.address}`);
   console.log(`Please store this factory address for future use ^^^`);

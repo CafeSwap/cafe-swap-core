@@ -8,7 +8,6 @@ contract CafeFactory is ICafeFactory {
 
     address public feeTo;
     address public feeToSetter;
-    address public migrator;
 
     mapping(address => mapping(address => address)) public getPair;
     address[] public allPairs;
@@ -43,11 +42,6 @@ contract CafeFactory is ICafeFactory {
     function setFeeTo(address _feeTo) external {
         require(msg.sender == feeToSetter, 'Cafe: FORBIDDEN');
         feeTo = _feeTo;
-    }
-
-    function setMigrator(address _migrator) external {
-        require(msg.sender == feeToSetter, 'Cafe: FORBIDDEN');
-        migrator = _migrator;
     }
 
     function setFeeToSetter(address _feeToSetter) external {
