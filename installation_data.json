@@ -1,9 +1,9 @@
 {
   "private_key": {
-    "alice": "324a245b515e43e42a7bd953bc96d46cabde5f3c9b43a91ef17e9294785e0f53"
+    "alice": ""
   },
   "public_key": {
-    "alice": "0xC952889061323cBFaB599d67B5069b1f3356d4F2"
+    "alice": ""
   },
   "contract_address": {
     "cafe_factory": "0xC682Ab6969158a027341ed308c87D27d66981faf"
